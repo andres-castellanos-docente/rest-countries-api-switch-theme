@@ -1,0 +1,27 @@
+<div [@IzADerAnimation]  class="filterBar container" [ngClass]="darkMode ? 'dark' : 'light'">
+  <span [ngClass]="darkMode ? 'darkElements' : 'lightElements'">
+  <i class="fas fa-search" aria-hidden="true"></i>
+  <input type="text" (input)="updateFilteredCountries($event)" placeholder="Search for a country...">
+</span>
+  <div class="regionFilter">
+    <div [ngClass]="darkMode ? 'darkElements' : 'lightElements'">
+      <span>
+        <button  (click)="delRegion()" [ngClass]="darkMode ? 'darkElements' : 'lightElements'" *ngIf="filteredRegion">
+          <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+        {{textRegion}}
+      </span>
+        <i class="fas fa-arrow-left mousepoint" (click)="dropDownFilterStatus = !dropDownFilterStatus"
+           [ngClass]="dropDownFilterStatus ? 'arrow_Up' : 'arrow_Down'" aria-hidden="true">
+        </i>
+    </div>
+    <ul (click)="updateRegionCountries($event)" [ngClass]="darkMode ? 'darkElements' : 'lightElements'"
+        *ngIf="dropDownFilterStatus">
+      <li>africa</li>
+      <li>americas</li>
+      <li>asia</li>
+      <li>europe</li>
+      <li>oceania</li>
+    </ul>
+  </div>
+</div>

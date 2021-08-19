@@ -1,0 +1,14 @@
+<div class="pagination" [ngClass]="darkMode ? 'dark' : 'light'">
+  <button (click)="previousPage()" [disabled]="currentPage === 1"><i class="fas fa-arrow-left" aria-hidden="true"></i>
+  </button>
+  <button *ngIf="currentPage  > 1" (click)="changePage($event)">1</button>
+  <button *ngIf="currentPage > 2"  class="elipsis"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></button>
+  <button (click)="changePage($event)" class="isActive">{{currentPage}}</button>
+  <button class="elipsis" *ngIf="currentPage < totalPages - 1"><i class="fas fa-ellipsis-h" aria-hidden="true"></i>
+  </button>
+  <button (click)="changePage($event)" *ngIf="currentPage < totalPages">{{totalPages}}</button>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages" class="nextPage">
+    <i class="fas fa-arrow-left" aria-hidden="true"></i>
+  </button>
+</div>
+

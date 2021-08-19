@@ -1,0 +1,7 @@
+<div class="borderCountries" [ngClass]="darkMode ? 'dark' : 'light'">
+  <h3>Border Countries: </h3>
+  <div>
+    <a  *ngFor="let data of buttonBorders; index as i"  [ngClass]="darkMode ? 'dark darkElements' : 'light lightElements'"
+          [routerLink]="'/countries/'+data" >{{data}}</a>
+  </div>
+</div>

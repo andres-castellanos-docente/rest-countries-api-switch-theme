@@ -1,0 +1,9 @@
+  <nav class="container navBar" [ngClass]="darkMode ? 'dark darkElements' : 'light lightElements'"  >
+    <a class="bold" routerLink="/">Where in the world?</a>
+    <button class="semiBold" (click)="onClick()"  [ngClass]="darkMode ? 'dark darkElements' : 'light lightElements'" >
+      <i class="fas fa-moon"></i>
+      <span *ngIf="darkMode">Light Mode</span>
+      <span *ngIf="!darkMode">Dark Mode</span>
+    </button>
+  </nav>
+

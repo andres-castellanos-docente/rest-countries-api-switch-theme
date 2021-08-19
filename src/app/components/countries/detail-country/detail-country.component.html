@@ -1,0 +1,42 @@
+<div id="root">
+  <header class="countryDetails" [ngClass]="darkMode ? 'dark' : 'light'">
+    <app-nav-bar [darkMode]="darkMode" (isDarkChange)="darkMode = $event"></app-nav-bar>
+    <a  [@IzADerAnimation] class="backButton" [ngClass]="darkMode ? 'dark darkElements' : 'light lightElements'" routerLink="/">
+      <i class="fas fa-arrow-left" aria-hidden="true"></i>Back</a>
+  </header>
+  <div class="main" [ngClass]="darkMode ? 'dark' : 'light'">
+    <main [@subirAnimation]="!loading   ? true : false" class="countryDetails main" [ngClass]="darkMode ? 'dark' : 'light'" *ngIf="dataPais && !loading">
+      <div class="flag">
+        <img [src]="dataPais.flag"
+             [alt]="dataPais.name"></div>
+      <div class="details"><h1> {{dataPais.name}}</h1>
+        <div class="detailsContainer">
+          <div class="mainDetails"><p>Native Name:
+            <span [ngClass]="darkMode ? 'darkDetails' : 'lightDetails'">{{dataPais.nativeName}} </span>
+          </p>
+            <p>Population: <span
+              [ngClass]="darkMode ? 'darkDetails' : 'lightDetails'">{{dataPais.population | number}}</span></p>
+            <p>Region: <span [ngClass]="darkMode ? 'darkDetails' : 'lightDetails'">{{dataPais.region}} </span></p>
+            <p>Sub Region: <span [ngClass]="darkMode ? 'darkDetails' : 'lightDetails'"> {{dataPais.subregion}} </span>
+            </p>
+            <p>Capital: <span [ngClass]="darkMode ? 'darkDetails' : 'lightDetails'"> {{dataPais.capital}}</span></p>
+          </div>
+          <div class="additionalDetails"><p>Top Level Domain:
+            <span [ngClass]="darkMode ? 'darkDetails' : 'lightDetails'">{{dataPais.topLevelDomain}}</span></p>
+            <p>Currencies:
+              <span [ngClass]="darkMode ? 'darkDetails' : 'lightDetails'"
+                    *ngFor="let data of dataPais.currencies; index as i">{{data.name}}
+               </span></p>
+            <p class="languages">Languages :
+              <span [ngClass]="darkMode ? 'darkDetails' : 'lightDetails'"
+                    *ngFor="let data of dataPais.languages; index as i">{{data.name }}
+               </span>
+            </p>
+          </div>
+        </div>
+        <app-borders [buttonBorders]="buttonBorders"  *ngIf="dataPais.borders.length > 0" [darkMode]="darkMode"></app-borders>
+      </div>
+    </main>
+  </div>
+</div>
+<app-loading *ngIf="loading" [darkMode]="darkMode"></app-loading>
